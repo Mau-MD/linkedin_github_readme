@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .input-group {
+        @apply p-4 border-2 border-blue-500 rounded-lg w-full shadow-lg shadow-blue-500/10 focus:shadow-blue-500/40 transition duration-500 ease-in-out focus:outline-none;
+    }
+}

@@ -1,0 +1,19 @@
+.link {
+  cursor: pointer;
+}
+
+.view > rect {
+  transition: all 0.2s ease-in-out;
+}
+
+.view:hover > rect {
+  fill: #0f66c0;
+}
+
+.view > path {
+  transition: all 0.2s ease-in-out;
+}
+
+.view:hover > path {
+  fill: #fff;
+}
