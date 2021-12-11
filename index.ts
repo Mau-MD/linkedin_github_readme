@@ -10,7 +10,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "frontend/dist")));
 
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
+const HOST = "0.0.0.0";
+
 app.post(
     "/api/render/:name/:headline/:currentPosition/:education/:linkedinProfileUrl/:profileImageUrl/:currentPositionUrl?/:educationUrl?/",
     async (req: Request, res: Response) => {
@@ -47,7 +49,7 @@ app.post(
                 })
             );
         } catch (err) {
-            throw new Error("Error rendering SVG");
+            res.status(400).send(err);
         }
     }
 );
@@ -56,8 +58,8 @@ app.get("/", (req: Request, res: Response) => {
     res.sendFile(__dirname, "frontend/dist/index.html");
 });
 
-app.listen(port, () => {
-    console.log(`Server listening in port ${port}!`);
+app.listen(PORT, () => {
+    console.log(`Server running on http://${HOST}:${PORT}`);
 });
 
 // Link: https://badges.linkedin.com/profile?locale=en_US&badgetype=VERTICAL&badgetheme=light&uid=92175&version=v1&maxsize=medium&trk=profile-badge&vanityname=ivan

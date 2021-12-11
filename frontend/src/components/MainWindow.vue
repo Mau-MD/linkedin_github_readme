@@ -136,6 +136,7 @@
 import { ref } from "vue";
 import axios from "axios";
 import { RenderOptions } from "../../../types/render_types";
+import { config } from "../../../config";
 
 let formOptions: RenderOptions = {
     name: "",
@@ -178,7 +179,7 @@ async function generateSVG() {
 }
 
 function generateLink(formParams: RenderOptions) {
-    return `${import.meta.env.BASE_URL}/api/render/${Object.values(formParams).join("/")}`;
+    return `${config.BASE_URL}/api/render/${Object.values(formParams).join("/")}`;
 }
 
 function handleCopy() {
