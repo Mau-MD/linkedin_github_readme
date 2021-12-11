@@ -2,13 +2,15 @@ import express, { Request, Response } from "express";
 import { render } from "./src/render";
 import cors from "cors";
 import axios from "axios";
+import path from "path";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "frontend/dist")));
 
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 3000;
 app.post(
     "/api/render/:name/:headline/:currentPosition/:education/:linkedinProfileUrl/:profileImageUrl/:currentPositionUrl?/:educationUrl?/",
     async (req: Request, res: Response) => {
@@ -50,8 +52,12 @@ app.post(
     }
 );
 
+app.get("/", (req: Request, res: Response) => {
+    res.sendFile(__dirname, "frontend/dist/index.html");
+});
+
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}!`);
+    console.log(`Server listening in port ${port}!`);
 });
 
 // Link: https://badges.linkedin.com/profile?locale=en_US&badgetype=VERTICAL&badgetheme=light&uid=92175&version=v1&maxsize=medium&trk=profile-badge&vanityname=ivan

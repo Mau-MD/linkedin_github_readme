@@ -178,9 +178,8 @@ async function generateSVG() {
 }
 
 function generateLink(formParams: RenderOptions) {
-    return `http://localhost:9000/api/render/${Object.values(formParams).join("/")}`;
+    return `${import.meta.env.BASE_URL}/api/render/${Object.values(formParams).join("/")}`;
 }
-// /:profile_url/:img_url/:name/:subtitle/:work1/:work2?/:work1_url?/:work2_url?/"
 
 function handleCopy() {
     window.navigator.clipboard.writeText(link.value).then(() => {
