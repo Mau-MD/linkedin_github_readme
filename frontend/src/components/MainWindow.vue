@@ -161,14 +161,12 @@ async function generateSVG() {
     formParams.linkedinProfileUrl = encodeURIComponent(formParams.linkedinProfileUrl);
     formParams.profileImageUrl = encodeURIComponent(formParams.profileImageUrl);
 
-    console.log(formParams);
     // Send to server
     try {
         const URL = generateLink(formParams);
-        console.log(URL);
         const data = await axios.get(URL);
         svg.value = encodeURIComponent(data.data);
-        link.value = URL;
+        link.value = URL.replaceAll(" ", "%20");
     } catch (error: any) {
         console.error(error);
         if (typeof error.message === "string") {
