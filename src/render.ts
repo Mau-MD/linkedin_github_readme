@@ -2,9 +2,9 @@ import fs from "fs";
 import { RenderOptions } from "../types/render_types";
 
 export const render = (options: RenderOptions): string => {
-    console.log(render);
     return `
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="250" height="268" viewBox="0 0 250 268" fill="none">
+  <rect width="250" height="268" fill="#FFF"/>
   ${renderAll(options)}
   </svg>
   `;
