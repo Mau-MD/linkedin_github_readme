@@ -1,4 +1,3 @@
-const DEV_URL = "http://localhost:3000";
 const DOCKER_URL = "http://0.0.0.0:8080";
 const PROD_URL = "https://linkedin-github.herokuapp.com/";
 
