@@ -52,39 +52,6 @@
                     />
                 </div>
                 <div>
-                    <div class="mb-[6px]">Current Position URL</div>
-                    <input
-                        v-model="formOptions.currentPositionUrl"
-                        autocomplete="none"
-                        type="text"
-                        class="input-group"
-                        placeholder="https://www.linkedin.com/company"
-                    />
-                </div>
-                <div>
-                    <div class="mb-[6px]">Education URL</div>
-                    <input
-                        v-model="formOptions.educationUrl"
-                        autocomplete="none"
-                        type="text"
-                        class="input-group"
-                        placeholder="https://www.linkedin.com/company"
-                    />
-                </div>
-                <div>
-                    <div class="mb-[6px]">
-                        Linkedin Profile URL<span class="text-red-500">*</span>
-                    </div>
-                    <input
-                        v-model="formOptions.linkedinProfileUrl"
-                        autocomplete="none"
-                        type="text"
-                        class="input-group"
-                        placeholder="https://www.linkedin.com/in/person"
-                        required
-                    />
-                </div>
-                <div>
                     <div class="mb-[6px]">Profile Image URL<span class="text-red-500">*</span></div>
                     <input
                         v-model="formOptions.profileImageUrl"
@@ -94,6 +61,33 @@
                         placeholder="https://media-exp1.licdn.com/dms/image/C4E03AQEwXutZ_HWnsQ/profile-displayphoto-shrink_800_800/0/1631334257269?e=1644451200&v=beta&t=jfTK-PELJ9AXBlhZ_ZodPs6God09gYe_7mAvsCPDvHo"
                         required
                     />
+                </div>
+                <div>
+                    <div class="mb-[6px]">Theme<span class="text-red-500">*</span></div>
+                    <div class="relative">
+                        <select
+                            v-model="formOptions.theme"
+                            class="input-group appearance-none bg-white"
+                            required
+                        >
+                            <option v-for="theme in themes" :value="theme">
+                                {{ theme.replaceAll("_", " ") }}
+                            </option>
+                        </select>
+                        <div
+                            class="absolute h-full inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                        >
+                            <svg
+                                class="fill-current h-4 w-4"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                                />
+                            </svg>
+                        </div>
+                    </div>
                 </div>
                 <button
                     type="submit"
@@ -132,7 +126,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, Ref, ref } from "vue";
 import axios from "axios";
 import { RenderOptions } from "../../../types/render_types";
 import { config } from "../../../config";
@@ -142,23 +136,21 @@ let formOptions: RenderOptions = {
     headline: "",
     currentPosition: "",
     education: "",
-    linkedinProfileUrl: "",
+    theme: "light",
     profileImageUrl: "",
-    currentPositionUrl: "",
-    educationUrl: "",
 };
+
 let link = ref("");
 let hasBeenCopied = ref(false);
 let isError = ref(false);
 let svg = ref("");
+let themes: Ref<string[]> = ref([]);
 
 async function generateSVG() {
     // Encode URLs
+    isError.value = false;
     const formParams = { ...formOptions };
 
-    formParams.currentPositionUrl = encodeURIComponent(formParams.currentPositionUrl);
-    formParams.educationUrl = encodeURIComponent(formParams.educationUrl);
-    formParams.linkedinProfileUrl = encodeURIComponent(formParams.linkedinProfileUrl);
     formParams.profileImageUrl = encodeURIComponent(formParams.profileImageUrl);
 
     // Send to server
@@ -190,4 +182,19 @@ function handleCopy() {
         }, 2000);
     });
 }
+
+onMounted(async () => {
+    try {
+        const fetchedThemes = await axios.get(
+            `${
+                import.meta.env.PROD
+                    ? window.location
+                    : `http://${location.hostname}:${config.NODE_PORT}/`
+            }api/getThemes`
+        );
+        themes.value = fetchedThemes.data;
+    } catch (error) {
+        console.error(error);
+    }
+});
 </script>

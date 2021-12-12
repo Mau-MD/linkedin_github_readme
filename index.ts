@@ -3,6 +3,8 @@ import { render } from "./src/render";
 import cors from "cors";
 import axios from "axios";
 import path from "path";
+import fs from "fs";
+import { getCurrentThemes } from "./src/themes";
 
 const app = express();
 
@@ -13,22 +15,14 @@ const PORT = process.env.PORT || 8080;
 const HOST = process.env.DOCKER === "true" ? "0.0.0.0" : "localhost";
 
 app.get(
-    "/api/render/:name/:headline/:currentPosition/:education/:linkedinProfileUrl/:profileImageUrl/:currentPositionUrl?/:educationUrl?/",
+    "/api/render/:name/:headline/:currentPosition/:education/:theme/:profileImageUrl/",
     async (req: Request, res: Response) => {
         try {
-            let {
-                name,
-                headline,
-                currentPosition,
-                education,
-                currentPositionUrl,
-                educationUrl,
-                linkedinProfileUrl,
-                profileImageUrl,
-            } = req.params;
+            let { name, headline, currentPosition, education, theme, profileImageUrl } = req.params;
 
-            currentPositionUrl = currentPositionUrl ?? linkedinProfileUrl;
-            educationUrl = educationUrl ?? linkedinProfileUrl;
+            if (getCurrentThemes().includes(theme) === false) {
+                throw new Error(`Theme ${theme} is not supported`);
+            }
 
             // Link to base64
             const image = await axios.get(profileImageUrl, { responseType: "arraybuffer" });
@@ -41,10 +35,8 @@ app.get(
                     headline,
                     currentPosition,
                     education,
-                    currentPositionUrl,
-                    educationUrl,
-                    linkedinProfileUrl,
                     profileImageUrl: base64Img,
+                    theme,
                 })
             );
         } catch (err) {
@@ -52,6 +44,10 @@ app.get(
         }
     }
 );
+
+app.get("/api/getThemes", (req: Request, res: Response) => {
+    res.send(getCurrentThemes());
+});
 
 app.get("/", (req: Request, res: Response) => {
     res.sendFile(__dirname, "frontend/dist/index.html");
