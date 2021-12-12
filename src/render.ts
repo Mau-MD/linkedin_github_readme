@@ -33,16 +33,16 @@ const renderAll = (options: RenderOptions, themeHandler: ThemeHandler): string =
     </clipPath>
   </defs>
   <image class="link" x="10%" y="70" width="50" height="50" clip-path="url(#img)" xlink:href="data:image/png;base64,${options.profileImageUrl}"/>`;
-    const name = `<text class="link" xmlns="http://www.w3.org/2000/svg" x="10%" y="140" text-anchor="left" font-family="roboto" font-weight="bold" font-size="16" fill="${themeHandler.handleTheme(
+    const name = `<text class="link" xmlns="http://www.w3.org/2000/svg" x="10%" y="140" text-anchor="left" font-family="roboto, Verdana,Geneva,DejaVu Sans,sans-serif" font-weight="bold" font-size="16" fill="${themeHandler.handleTheme(
         "text"
     )}">${options.name}</text>`;
-    const desc = `<text class="link" xmlns="http://www.w3.org/2000/svg" x="10%" y="160" text-anchor="left" font-family="roboto" font-size="16" fill="${themeHandler.handleTheme(
+    const desc = `<text class="link" xmlns="http://www.w3.org/2000/svg" x="10%" y="160" text-anchor="left" font-family="roboto, Verdana,Geneva,DejaVu Sans,sans-serif" font-size="16" fill="${themeHandler.handleTheme(
         "text"
     )}">${options.headline}</text>`;
-    const work = `<text class="link" xmlns="http://www.w3.org/2000/svg" x="10%" y="180" text-anchor="left" font-family="roboto" font-size="12" fill="${themeHandler.handleTheme(
+    const work = `<text class="link" xmlns="http://www.w3.org/2000/svg" x="10%" y="180" text-anchor="left" font-family="roboto, Verdana,Geneva,DejaVu Sans,sans-serif" font-size="12" fill="${themeHandler.handleTheme(
         "text"
     )}">${options.currentPosition}</text>`;
-    const education = `<text class="link" xmlns="http://www.w3.org/2000/svg" x="10%" y="200" text-anchor="left" font-family="roboto" font-size="12" fill="${themeHandler.handleTheme(
+    const education = `<text class="link" xmlns="http://www.w3.org/2000/svg" x="10%" y="200" text-anchor="left" font-family="roboto, Verdana,Geneva,DejaVu Sans,sans-serif" font-size="12" fill="${themeHandler.handleTheme(
         "text"
     )}">${options.education}</text>`;
     const view = renderView(themeHandler);
