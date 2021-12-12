@@ -13,6 +13,9 @@ Enter the [this page](https://linkedin-github.herokuapp.com/) and fill the requi
 ```
 ![image](https://user-images.githubusercontent.com/74751751/145731472-d2f4ca91-4915-4221-9c93-4e4cd55bd5ba.png)
 
+### Issues
+- Text wrap is not automatic
+
 ### Future Updates
 - Automatic Information Parser with LinkedIn API (hard to get accepted into their program)
 - Initial animations
