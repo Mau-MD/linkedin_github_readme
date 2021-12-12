@@ -7,13 +7,12 @@ import path from "path";
 const app = express();
 
 app.use(cors());
-app.use(express.json());
 app.use(express.static(path.join(__dirname, "frontend/dist")));
 
 const PORT = process.env.PORT || 8080;
-const HOST = "0.0.0.0";
+const HOST = process.env.DOCKER === "true" ? "0.0.0.0" : "localhost";
 
-app.post(
+app.get(
     "/api/render/:name/:headline/:currentPosition/:education/:linkedinProfileUrl/:profileImageUrl/:currentPositionUrl?/:educationUrl?/",
     async (req: Request, res: Response) => {
         try {

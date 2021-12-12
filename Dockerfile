@@ -17,4 +17,4 @@ RUN yarn --cwd ./frontend build
 RUN yarn global add ts-node
 
 EXPOSE 8080
-CMD ["ts-node", "index.ts"]
+CMD ["cross-env", "DOCKER=true", "ts-node", "index.ts"]

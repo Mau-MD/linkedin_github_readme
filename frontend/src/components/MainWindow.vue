@@ -121,11 +121,10 @@
                     <div v-show="hasBeenCopied" class="ml-4 text-blue-500">Copied!</div>
                 </div>
             </div>
-            <div class="mt-8">
+            <div class="mt-8" v-show="svg != ''">
                 <div class="mb-[6px]">Generated SVG:</div>
                 <div class="w-[55%] h-full border-4 text-gray-500 rounded-xl p-4">
                     <img :src="'data:image/svg+xml;utf8,' + svg" />
-                    <!-- <object :data="svg" type="image/svg+xml" id="mySVG"></object> -->
                 </div>
             </div>
         </div>
@@ -166,7 +165,8 @@ async function generateSVG() {
     // Send to server
     try {
         const URL = generateLink(formParams);
-        const data = await axios.post(URL);
+        console.log(URL);
+        const data = await axios.get(URL);
         svg.value = encodeURIComponent(data.data);
         link.value = URL;
     } catch (error: any) {
@@ -179,7 +179,9 @@ async function generateSVG() {
 }
 
 function generateLink(formParams: RenderOptions) {
-    return `${config.BASE_URL}/api/render/${Object.values(formParams).join("/")}`;
+    return `${
+        import.meta.env.PROD ? window.location : `http://${location.hostname}:${config.NODE_PORT}/`
+    }api/render/${Object.values(formParams).join("/")}`;
 }
 
 function handleCopy() {

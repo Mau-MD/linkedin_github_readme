@@ -5,7 +5,7 @@
     "license": "MIT",
     "scripts": {
         "start": "nodemon index.ts",
-        "dev": "concurrently \"yarn --cwd ./frontend dev\" \"yarn start\"",
+        "dev": "cross-env DOCKER=false concurrently \"yarn --cwd ./frontend dev\" \"yarn start\"",
         "install-all": "yarn install & yarn --cwd ./frontend install"
     },
     "dependencies": {
@@ -23,5 +23,7 @@
         "typescript": "^4.5.2",
         "xml": "^1.0.1"
     },
-    "devDependencies": {}
+    "devDependencies": {
+        "cross-env": "^7.0.3"
+    }
 }
