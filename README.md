@@ -7,6 +7,12 @@ Enter the page and fill the required information. Then, copy the link and paste 
 ```
 [![linkedin](app-generated-url)](your-linkedin-profile-url)
 ```
+### TODO
+- Change POST to GET
+- Wrong PROD_URL
+- Hide IMG icon when svg has not been generated yet
+- Delete vercel.json
+- Change Favicon and title
 
 ### Future Updates
 - Support for themes
