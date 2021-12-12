@@ -16,7 +16,7 @@ Enter the [this page](https://linkedin-github.herokuapp.com/) and fill the requi
 ### Future Updates
 - Automatic Information Parser with LinkedIn API (hard to get accepted into their program)
 - Initial animations
-- 
+
 ### Development
 Clone the repository and run `yarn dev`. 
 Add themes creating a new `theme-name.json` file inside `src/themes/` folder. Make a pull request with your theme.
