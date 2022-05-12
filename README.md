@@ -3,7 +3,7 @@
 
 [![Website](https://img.shields.io/website?label=Linkedin%20Badge%20Generator&style=for-the-badge&url=https%3A%2F%2Flinkedin-github.herokuapp.com%2F)](https://linkedin-github.herokuapp.com/)
 
-![linkedin](https://linkedin-github.herokuapp.com/api/render/Mauricio%20Munoz/Software%20Engineer/Meta/CETYS%20Universidad/dark/https%3A%2F%2Fmedia-exp1.licdn.com%2Fdms%2Fimage%2FC4E03AQFUkwwthD9trg%2Fprofile-displayphoto-shrink_800_800%2F0%2F1637085592669%3Fe%3D1651708800%26v%3Dbeta%26t%3DShB3sSZw1U1EufEvNw8tp2I27mf5fUGnElAnma8AtnY)
+![linkedin](https://linkedin-github.herokuapp.com/api/render/Mauricio%20Munoz/Meta/Intern/Software%20Engineer%20Student/dark/https%3A%2F%2Fmedia-exp1.licdn.com%2Fdms%2Fimage%2FC5603AQEuAu32nJ7KUA%2Fprofile-displayphoto-shrink_200_200%2F0%2F1649468944468%3Fe%3D1657756800%26v%3Dbeta%26t%3DU0u1ey-USqMfRT8ynQ_9N9NCebBSVxR_mdoaL_h_RY0)
 
 ### Usage
 Enter the [this page](https://linkedin-github.herokuapp.com/) and fill the required information. Then, copy the link and paste it into your profile repository.
