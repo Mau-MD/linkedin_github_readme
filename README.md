@@ -5,7 +5,7 @@
 [![linkedin](https://linkedin-github-readme.onrender.com/api/render/Mauricio%20Munoz/Software%20Engineer/Colonist/CETYS%20Universidad/dark/https%3A%2F%2Fmedia.licdn.com%2Fdms%2Fimage%2FD5603AQFmH4WZgKO7yw%2Fprofile-displayphoto-shrink_400_400%2F0%2F1674516296571%3Fe%3D1682553600%26v%3Dbeta%26t%3Dq8V4tAAonJ5dX5ZqJJRKxg4H0l7yBwlZn_JsYGycWDc)](https://www.linkedin.com/in/mmunoz15/)
 
 ### Usage
-Enter the [this page](https://linkedin-github.herokuapp.com/) and fill the required information. Then, copy the link and paste it into your profile repository.
+Enter the [this page](https://linkedin-github-readme.onrender.com/) and fill the required information. Then, copy the link and paste it into your profile repository.
 
 ```
 [![linkedin](app-generated-url)](your-linkedin-profile-url)
