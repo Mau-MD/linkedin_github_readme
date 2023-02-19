@@ -32,7 +32,7 @@ const renderAll = (options: RenderOptions, themeHandler: ThemeHandler): string =
     <circle cx="calc(10% + 22px)" cy="92" r="22" />
     </clipPath>
   </defs>
-  <image class="link" x="10%" y="70" width="50" height="50" clip-path="url(#img)" xlink:href="data:image/png;base64,${options.profileImageUrl}"/>`;
+  <image class="link" x="10%" y="70" width="45" height="45" clip-path="url(#img)" xlink:href="data:image/png;base64,${options.profileImageUrl}"/>`;
     const name = `<text class="link" xmlns="http://www.w3.org/2000/svg" x="10%" y="140" text-anchor="left" font-family="roboto, Verdana,Geneva,DejaVu Sans,sans-serif" font-weight="bold" font-size="16" fill="${themeHandler.handleTheme(
         "text"
     )}">${options.name}</text>`;
